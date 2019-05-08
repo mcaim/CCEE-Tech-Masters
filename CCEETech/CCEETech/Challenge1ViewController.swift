@@ -1,6 +1,8 @@
 //
 //  Challenge1ViewController.swift
-//  CCEEtest
+//  CCEETech
+//
+//  ViewController that handles AR scanner in Challenge 1
 //
 //  Created by Macbook Pro on 3/14/19.
 //
@@ -104,6 +106,5 @@ extension Challenge1ViewController: ARSCNViewDelegate {
         if score < 500 {
             ref.child("\(currentUser!.uid)/score").setValue(500)
         }
-        //ref.child("\(currentUser!.uid)/score").setValue(score + 500)
     }
 }

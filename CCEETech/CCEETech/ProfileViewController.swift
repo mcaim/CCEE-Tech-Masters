@@ -1,6 +1,8 @@
 //
 //  ProfileViewController.swift
-//  CCEEtest
+//  CCEETech
+//
+//  Class for customing Profile VC
 //
 //  Created by mcaim on 2/27/19.
 //
@@ -11,6 +13,7 @@ import Firebase
 
 class ProfileViewController:UIViewController {
     
+    // top left outlets
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var imageTap: UIButton!
     @IBOutlet weak var username: UILabel!
@@ -18,12 +21,12 @@ class ProfileViewController:UIViewController {
     @IBOutlet weak var xpLabel: UILabel!
     @IBOutlet weak var level_label: UILabel!
     
+    // imagePicker for changing profile picture
     var imagePicker:UIImagePickerController!
     
+    // badge outlets
     @IBOutlet weak var badge1: UIImageView!
-    
     @IBOutlet weak var badge2: UIImageView!
-    
     @IBOutlet weak var badge3: UIImageView!
     
     override func viewDidLoad() {
@@ -38,12 +41,12 @@ class ProfileViewController:UIViewController {
             self.profileImage.clipsToBounds = true;
         }
         
+        // Set up imageUI for tapping to change
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
         profileImage.isUserInteractionEnabled = true
         profileImage.addGestureRecognizer(imageTap)
         profileImage.layer.cornerRadius = profileImage.bounds.height / 2
         profileImage.clipsToBounds = true
-        //tapToChangeProfileButton.addTarget(self, action: #selector(openImagePicker), for: .touchUpInside)
         
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
@@ -74,7 +77,6 @@ class ProfileViewController:UIViewController {
         }
         print(Float(Double(currentProgress)/1000.0))
         progressBar.setProgress(Float(Double(currentProgress)/(Double(currentlevel)*1000.0)), animated: false)
-        //progressBar.progress = Float(0.5)
         
         self.xpLabel.text = String(score) + " / " + String(currentlevel*1000) + " xp"
         self.level_label.text = "Level " + String(currentlevel)
@@ -95,22 +97,9 @@ class ProfileViewController:UIViewController {
         self.present(imagePicker, animated: true, completion: nil)
     }
     
+    // change profile image
     @objc func handleSignUp() {
-        //guard let username = usernameField.text else { return }
-        //guard let email = emailField.text else { return }
-        //guard let pass = passwordField.text else { return }
         guard let image = profileImage.image else { return }
-        
-        //setContinueButton(enabled: false)
-        //continueButton.setTitle("", for: .normal)
-        //activityView.startAnimating()
-        
-        //Auth.auth().createUser(withEmail: email, password: pass) { user, error in
-        //if Auth.currentUser != nil {
-                print("User created!")
-                
-                
-                
                 
                 // 1. Upload the profile image to Firebase Storage
                 
@@ -119,52 +108,40 @@ class ProfileViewController:UIViewController {
                     print("uploading profile img")
                     self.saveProfile(username: "username", profileImageURL: url!) { success in
                         if success {
-                            //self.dismiss(animated: true, completion: nil)
+                            // continue
                         } else {
                             self.resetForm()
-                            print("1")
                         }
                     }
                     if url != nil {
-                        print("url not nil")
                         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                        //changeRequest?.displayName = 'cheese'
                         changeRequest?.photoURL = url
                         
                         changeRequest?.commitChanges { error in
                             if error == nil {
-                                print("User display name changed!")
                                 
                                 self.saveProfile(username: "username", profileImageURL: url!) { success in
                                     if success {
-                                        //self.dismiss(animated: true, completion: nil)
+                                        // continue
                                     } else {
-                                 //       self.resetForm()
-                                        print("1")
+                                        //print("1")
                                     }
                                 }
                                 
                             } else {
                                 print("Error: \(error!.localizedDescription)")
-                               // self.resetForm()
                             }
                         }
                     } else {
-                        //self.resetForm()
                         print("2")
                     }
                     
                 }
-                
-             //else {
-                //self.resetForm()
-                //print("3")
-            //}
-        //}
+        
     }
     
     func resetForm() {
-        let alert = UIAlertController(title: "Error signing up", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error changing profile image", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         

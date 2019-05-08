@@ -1,6 +1,8 @@
 //
 //  SignUpViewController.swift
-//  CCEEtest
+//  CCEETech
+//
+//  Class for handling signing up
 //
 //  Created by mcaim on 2/14/19
 //
@@ -10,6 +12,7 @@ import Firebase
 
 class SignUpViewController:UIViewController, UITextFieldDelegate {
     
+    // outlets
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -26,8 +29,10 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
         
+        // add 2 color background
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
+        // add continue button
         continueButton = RoundedWhiteButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         continueButton.setTitleColor(secondaryColor, for: .normal)
         continueButton.setTitle("Continue", for: .normal)
@@ -47,6 +52,7 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
         
         view.addSubview(activityView)
         
+        // delegating input fields
         usernameField.delegate = self
         emailField.delegate = self
         passwordField.delegate = self
@@ -55,13 +61,12 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
         emailField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         passwordField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
-        
+        // set up profile image picker
         let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
         profileImageView.isUserInteractionEnabled = true
         profileImageView.addGestureRecognizer(imageTap)
         profileImageView.layer.cornerRadius = profileImageView.bounds.height / 2
         profileImageView.clipsToBounds = true
-        //tapToChangeProfileButton.addTarget(self, action: #selector(openImagePicker), for: .touchUpInside)
         
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
@@ -69,6 +74,8 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
         imagePicker.delegate = self
     }
     
+    
+    // lock screen to portrait
     override var shouldAutorotate: Bool {
         return false
     }
@@ -93,6 +100,7 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
         
     }
     
+    // resign field responders
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         usernameField.resignFirstResponder()
@@ -102,6 +110,7 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self)
     }
     
+    // keyboard dismissal
     override var disablesAutomaticKeyboardDismissal: Bool {
         get { return false }
         set { self.disablesAutomaticKeyboardDismissal = false }
@@ -205,24 +214,20 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
                 
                 self.uploadProfileImage(image) { url in
                     
-                    print("uploading profile img")
                     self.saveProfile(username: username, profileImageURL: url!) { success in
                         if success {
-                            //self.dismiss(animated: true, completion: nil)
+                            // continue
                         } else {
                             self.resetForm()
-                            print("1")
                         }
                     }
                     if url != nil {
-                        print("url not nil")
                         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                         changeRequest?.displayName = username
                         changeRequest?.photoURL = url
                         
                         changeRequest?.commitChanges { error in
                             if error == nil {
-                                print("User display name changed!")
                                 
                                 self.saveProfile(username: username, profileImageURL: url!) { success in
                                     if success {
@@ -233,11 +238,11 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
                                         self.performSegue(withIdentifier: "toMainTabBarController", sender: self)
                                     } else {
                                         self.resetForm()
-                                        print("1")
                                     }
                                 }
                                 
                             } else {
+                                // alert for wierd error
                                 print("Error: \(error!.localizedDescription)")
                                 let alert = UIAlertController(title: "Error changing username/profile image", message: nil, preferredStyle: .alert)
                                 alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
@@ -246,17 +251,16 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
                             }
                         }
                     } else {
-                        //print("Error: \(error!.localizedDescription)")
                         let alert = UIAlertController(title: "Error uploading image", message: nil, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                         self.resetForm()
-                        print("2")
                     }
                     
                 }
                 
             } else {
+                // couldn't sign up due to bad username or password
                 if (username.count < 5 || pass.count < 5) {
                     let alert = UIAlertController(title: "Username and Password must be at least 6 characters", message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
@@ -266,18 +270,13 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
                     alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
-                //print("Error: \(error!.localizedDescription)")
                 self.resetForm()
-                print("3")
             }
         }
     }
     
+    // reset the form if some error happens
     func resetForm() {
-//        let alert = UIAlertController(title: "Error signing up", message: nil, preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-//        self.present(alert, animated: true, completion: nil)
-        
         setContinueButton(enabled: true)
         continueButton.setTitle("Continue", for: .normal)
         activityView.stopAnimating()
@@ -285,14 +284,18 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
     
     func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:URL?)->())) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        // make a reference to Firebase storage in user's node
         let storageRef = Storage.storage().reference().child("user/\(uid)")
         
+        // compress img
         guard let imageData = image.jpegData(compressionQuality: 0.75) else { return }
         
-        
+        // info about img
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
         
+        // put image in Firebase Storage
         storageRef.putData(imageData, metadata: metaData) { metaData, error in
             if error == nil, metaData != nil {
                 storageRef.downloadURL { url, error in
@@ -301,11 +304,10 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
             } else {
                 completion(nil)
             }
-            print("image saved")
         }
     }
     
-    
+    // make a reference to the Firebase database and set a new user object with profile info
     func saveProfile(username:String, profileImageURL:URL, completion: @escaping ((_ success:Bool)->())) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let databaseRef = Database.database().reference().child("users/profile/\(uid)")
@@ -319,11 +321,12 @@ class SignUpViewController:UIViewController, UITextFieldDelegate {
         databaseRef.setValue(userObject) { error, ref in
             completion(error == nil)
         }
-        print("saved user")
     }
 }
 
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // picker functionality
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)

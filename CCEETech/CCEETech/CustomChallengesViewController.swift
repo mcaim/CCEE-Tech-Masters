@@ -1,6 +1,8 @@
 //
 //  CustomChallengesViewController.swift
-//  CCEEtest
+//  CCEETech
+//
+//  Class for adding score for completing custom challenges
 //
 //  Created by mcaim on 5/5/19.
 //
@@ -168,11 +170,8 @@ class CustomChallengesViewController:UIViewController, UITextFieldDelegate {
         continueButton.setTitle("", for: .normal)
         activityView.startAnimating()
         
-        if (pass == "password" && (Int(scoreInput) != nil)) {
+        if (pass == "WASELreg&37" && (Int(scoreInput) != nil)) {
             ref.child("\(currentUser!.uid)/score").setValue(score + Int(scoreInput)!)
-//            self.scoreField.resignFirstResponder()
-//            self.passwordField.resignFirstResponder()
-//            NotificationCenter.default.removeObserver(self)
             passwordField.text = nil
             let alert = UIAlertController(title: "Score updated", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))

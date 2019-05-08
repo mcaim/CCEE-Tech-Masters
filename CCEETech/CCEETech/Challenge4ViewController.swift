@@ -29,16 +29,10 @@ class Challenge4ViewController: UIViewController {
     
     func initQuiz() {
         let q1_a1 = ["straight_code_0.0", "right_code_0.0", "", "", "straight_code_180.0", "", "right_code_90.0", "straight_code_0.0", "straight_code_0.0", "straight_code_90.0", "right_code_180.0", "", "", "", "", "straight_code_-90.0", "", "", "", "", "", ""]
-        //let q2_a1 = ["straight_code_90.0","right_code_-90.0","uturn_code_90.0","straight_code_0.0","right_code_0.0"]
-        //let q3_a1 = ["straight_code_90.0","straight_code_90.0","straight_code_90.0","",""]
         
         let q1_answers = [Quiz.AnswerList(l: q1_a1)]
-       // let q2_answers = [Quiz.AnswerList(l: q2_a1)]
-       // let q3_answers = [Quiz.AnswerList(l: q3_a1)]
         
         let q1 = Quiz.Question(a: q1_answers, n: 1, g: "Maze Master")
-        //let q2 = Quiz.Question(a: q2_answers, n: 2, g: "GOAL: GREEN CIRCLE")
-        //let q3 = Quiz.Question(a: q3_answers, n: 3, g: "GOAL: BLUE CIRCLE")
         
         quiz.questions = [q1]
     }
@@ -93,7 +87,6 @@ class Challenge4ViewController: UIViewController {
             blank.image = nil
             blank.restorationIdentifier = ""
         }
-        //blanks[gestureRecognizer.view!.tag - 1].image = nil
     }
     
     @IBAction func rotate(_ sender: Any) {
@@ -136,9 +129,6 @@ class Challenge4ViewController: UIViewController {
     @IBAction func dragCode(_ gestureRecognizer : UIPanGestureRecognizer) {
         guard gestureRecognizer.view != nil else {return}
         let code = gestureRecognizer.view!
-        //code.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
-        //code.heightAnchor.constraint(equalToConstant: 25.0).isActive = true
-        //code.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         
         let translation = gestureRecognizer.translation(in: code.superview)
         if gestureRecognizer.state == .began {

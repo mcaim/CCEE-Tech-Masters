@@ -1,6 +1,8 @@
 //
 //  LoginViewController.swift
-//  CCEEtest
+//  CCEETech
+//
+//  Class for handling and customizing login
 //
 //  Created by mcaim on 2/14/19
 //
@@ -11,6 +13,7 @@ import Firebase
 
 class LoginViewController:UIViewController, UITextFieldDelegate {
     
+    // outlets
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var dismissButton: UIButton!
@@ -20,10 +23,13 @@ class LoginViewController:UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // set orientation to portrait
         UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
         
+        // adding 2 color background
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
+        // continue button initializing
         continueButton = RoundedWhiteButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
         continueButton.setTitleColor(secondaryColor, for: .normal)
         continueButton.setTitle("Continue", for: .normal)
@@ -43,6 +49,8 @@ class LoginViewController:UIViewController, UITextFieldDelegate {
         
         view.addSubview(activityView)
         
+        
+        // delegating fields for listeners
         emailField.delegate = self
         passwordField.delegate = self
         
@@ -50,6 +58,7 @@ class LoginViewController:UIViewController, UITextFieldDelegate {
         passwordField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
     
+    // handle rotation (make sure it stays portrait)
     override var shouldAutorotate: Bool {
         return false
     }
@@ -69,6 +78,8 @@ class LoginViewController:UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // register email field observer
         emailField.becomeFirstResponder()
         NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -76,6 +87,8 @@ class LoginViewController:UIViewController, UITextFieldDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        // resign responders and observer
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
         NotificationCenter.default.removeObserver(self)
@@ -96,11 +109,9 @@ class LoginViewController:UIViewController, UITextFieldDelegate {
         self.dismiss(animated: false, completion: nil)
     }
     
-    /**
-     Adjusts the center of the **continueButton** above the keyboard.
-     - Parameter notification: Contains the keyboardFrame info.
-     */
     
+     // Adjusts the center of the **continueButton** above the keyboard.
+     // Parameter notification: Contains the keyboardFrame info.
     @objc func keyboardWillAppear(notification: NSNotification){
         
         let info = notification.userInfo!
@@ -111,12 +122,8 @@ class LoginViewController:UIViewController, UITextFieldDelegate {
         activityView.center = continueButton.center
     }
     
-    /**
-     Enables the continue button if the **username**, **email**, and **password** fields are all non-empty.
-     
-     - Parameter target: The targeted **UITextField**.
-     */
-    
+     // Enables the continue button if the **username**, **email**, and **password** fields are all non-empty.
+     // Parameter target: The targeted **UITextField**.
     @objc func textFieldChanged(_ target:UITextField) {
         let email = emailField.text
         let password = passwordField.text
@@ -144,10 +151,8 @@ class LoginViewController:UIViewController, UITextFieldDelegate {
         return true
     }
     
-    /**
-     Enables or Disables the **continueButton**.
-     */
     
+     // Enables or Disables the **continueButton**.
     func setContinueButton(enabled:Bool) {
         if enabled {
             continueButton.alpha = 1.0
@@ -158,6 +163,8 @@ class LoginViewController:UIViewController, UITextFieldDelegate {
         }
     }
     
+    
+    // if signed in successful, go to home screen (MainTabBarController which sends to HomeVC)
     @objc func handleSignIn() {
         guard let email = emailField.text else { return }
         guard let pass = passwordField.text else { return }
@@ -172,17 +179,14 @@ class LoginViewController:UIViewController, UITextFieldDelegate {
                 self.passwordField.resignFirstResponder()
                 NotificationCenter.default.removeObserver(self)
                 self.performSegue(withIdentifier: "toMainTabBarController", sender: self)
-                //self.dismiss(animated: false, completion: nil)
-                //Auth.auth().currentUser?.reload()
-                //print("Signed in")
             } else {
-                print("Error logging in: \(error!.localizedDescription)")
-                
+                //print("Error logging in: \(error!.localizedDescription)")
                 self.resetForm()
             }
         }
     }
     
+    // if error, alert user then reset form
     func resetForm() {
         let alert = UIAlertController(title: "Error logging in", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))

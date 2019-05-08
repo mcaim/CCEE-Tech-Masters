@@ -7,9 +7,10 @@
 import UIKit
 import Firebase
 
+// store color vars for background
 let primaryColor = UIColor(red: 210/255, green: 109/255, blue: 180/255, alpha: 1)
 let secondaryColor = UIColor(red: 52/255, green: 148/255, blue: 230/255, alpha: 1)
-//var username = String()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -17,20 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var ref: DatabaseReference!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        Firebase.FirebaseApp.configure()
-        print("User?", Auth.auth().currentUser == nil)
-        //test
-        // Override point for customization after application launch.
         
-        //Auth.addStateDidChangeListener(<#T##Auth#>)
-        // FIX THIS ASAP...BREAKS LOG IN/SIGN UP
-        // MAYBE FIXED????
+        // Configure Firebase on application launch
+        Firebase.FirebaseApp.configure()
+        
+        // State of user starts as logged out
         var loggedIn = false
+        
+        // If user was already signed in on app launch, sign out
         try! Auth.auth().signOut()
+        
+        // this whole block should be skipped
         if Auth.auth().currentUser != nil {
             let uid = Auth.auth().currentUser?.uid
             
-            // here
+           
             UserService.observeUserProfile(uid!){ userProfile in
                 UserService.currentUserProfile = userProfile
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -40,10 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        // set up listener for user auth state
         Auth.auth().addStateDidChangeListener { auth, user in
-            print("ENTERED  STATE LISTENER")
+            //set storyboard reference
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            print("state changed")
+            
             // if user wasn't logged in, then they are now
             // this only happens after signing up or logging in
             if loggedIn == false {
@@ -56,24 +59,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     UserService.currentUserProfile = userProfile
                     // user was logged out so go to home screen
                     if loggedIn == false {
-                        print("went to maintabcontroller")
                         UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
                         loggedIn = true
                     } else {
-                        // user was already logged in so go to home screen
-                        // only want this if user was already signed in, not if logged in/signed up
-//                        let controller = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-//                        self.window?.rootViewController = controller
-//                        self.window?.makeKeyAndVisible()
+                        // continue
                     }
                 }
                 
             } else {
-                // menu screen
-                //user logged out so send back to Login/Signup screen
+                // just logged out
+                // user logged out so send back to Login/Signup screen
                 loggedIn = false
                 UserService.currentUserProfile = nil
-                print("back to menuviewcontroller")
                 UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
                 let controller = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
                 self.window?.rootViewController = controller

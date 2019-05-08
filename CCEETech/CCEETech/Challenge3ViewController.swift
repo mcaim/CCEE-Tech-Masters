@@ -99,7 +99,6 @@ class Challenge3ViewController: UIViewController {
             blank.image = nil
             blank.restorationIdentifier = ""
         }
-        //blanks[gestureRecognizer.view!.tag - 1].image = nil
     }
     
     @IBAction func rotate(_ sender: Any) {

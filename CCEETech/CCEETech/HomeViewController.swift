@@ -1,6 +1,8 @@
 //
 //  HomeViewController.swift
-//  CCEEtest
+//  CCEETech
+//
+//  Class for customizing Home VC (first screen seen after logging in/signing up)
 //
 //  Created by mcaim on 2/14/19
 //
@@ -36,8 +38,6 @@ class HomeViewController:UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
-        //progressBar.setProgress(Float(currentProgress/1000), animated: false)
         guard let userProfile = UserService.currentUserProfile else { return }
         let username = userProfile.username
         self.usernameLabel.text = username
@@ -56,7 +56,7 @@ class HomeViewController:UIViewController {
             currentProgress = currentlevel*1000 - (currentlevel*1000-score); //
         }
         print(Float(Double(currentProgress)/1000.0))
-        progressBar.setProgress(Float(Double(currentProgress)/(Double(currentlevel)*1000.0)), animated: false)        //progressBar.progress = Float(0.5)
+        progressBar.setProgress(Float(Double(currentProgress)/(Double(currentlevel)*1000.0)), animated: false)
         
         self.xpLabel.text = String(score) + " / " + String(currentlevel*1000) + " xp"
         self.level.text = "Level " + String(currentlevel)
@@ -86,6 +86,7 @@ class HomeViewController:UIViewController {
         return .landscapeRight
     }
     
+    // logout button
     @IBAction func handleLogout(_ sender:Any) {
         UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
         try! Auth.auth().signOut()

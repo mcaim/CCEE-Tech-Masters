@@ -15,14 +15,13 @@
 		880F7E2A2280D00300AB42C8 /* Challenge4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F7E212280D00000AB42C8 /* Challenge4ViewController.swift */; };
 		880F7E2B2280D00300AB42C8 /* CustomChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F7E222280D00100AB42C8 /* CustomChallengesViewController.swift */; };
 		880F7E2C2280D00300AB42C8 /* Challenge1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F7E232280D00200AB42C8 /* Challenge1ViewController.swift */; };
-		880F7E2D2280D00300AB42C8 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 880F7E242280D00200AB42C8 /* Base.lproj */; };
 		880F7E2E2280D00300AB42C8 /* Challenge2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F7E252280D00300AB42C8 /* Challenge2ViewController.swift */; };
 		880F7E2F2280D00300AB42C8 /* Challenge1QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F7E262280D00300AB42C8 /* Challenge1QuizViewController.swift */; };
 		880F7E332280D02B00AB42C8 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F7E302280D02400AB42C8 /* ImageService.swift */; };
 		880F7E342280D02B00AB42C8 /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F7E312280D02500AB42C8 /* HelperExtensions.swift */; };
 		880F7E352280D02B00AB42C8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F7E322280D02900AB42C8 /* HomeViewController.swift */; };
 		880F7E4A2280D06900AB42C8 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F7E362280D04200AB42C8 /* Quiz.swift */; };
-		880F7E4B2280D06900AB42C8 /* New Group in Resources */ = {isa = PBXBuildFile; fileRef = 880F7E372280D04E00AB42C8 /* New Group */; };
+		880F7E4B2280D06900AB42C8 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 880F7E372280D04E00AB42C8 /* Images */; };
 		880F7E4C2280D06900AB42C8 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F7E382280D05000AB42C8 /* MainTabController.swift */; };
 		880F7E4D2280D06900AB42C8 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F7E392280D05100AB42C8 /* InstructionsViewController.swift */; };
 		880F7E4E2280D06900AB42C8 /* OZO_Challenges in Resources */ = {isa = PBXBuildFile; fileRef = 880F7E3A2280D05400AB42C8 /* OZO_Challenges */; };
@@ -43,6 +42,7 @@
 		880F7E612280EB3F00AB42C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880F7E602280EB3C00AB42C8 /* Main.storyboard */; };
 		880F7E632280EF5300AB42C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 880F7E622280EF5100AB42C8 /* Assets.xcassets */; };
 		880F7E652280FC0A00AB42C8 /* ozo_tutorial2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 880F7E642280FC0800AB42C8 /* ozo_tutorial2.mp4 */; };
+		880F7E6722812F1B00AB42C8 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 880F7E6622812F1B00AB42C8 /* Base.lproj */; };
 		A21C38E6FDD2C1CDD6F513D7 /* Pods_CCEETechTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B988F0247652FBA943E21F5 /* Pods_CCEETechTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,22 +73,21 @@
 		880F7E212280D00000AB42C8 /* Challenge4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge4ViewController.swift; sourceTree = "<group>"; };
 		880F7E222280D00100AB42C8 /* CustomChallengesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomChallengesViewController.swift; sourceTree = "<group>"; };
 		880F7E232280D00200AB42C8 /* Challenge1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge1ViewController.swift; sourceTree = "<group>"; };
-		880F7E242280D00200AB42C8 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Base.lproj; path = ../../../CCEEAPP/CCEETechMasters/CCEETechMasters/Base.lproj; sourceTree = "<group>"; };
 		880F7E252280D00300AB42C8 /* Challenge2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge2ViewController.swift; sourceTree = "<group>"; };
 		880F7E262280D00300AB42C8 /* Challenge1QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge1QuizViewController.swift; sourceTree = "<group>"; };
 		880F7E302280D02400AB42C8 /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		880F7E312280D02500AB42C8 /* HelperExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		880F7E322280D02900AB42C8 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		880F7E362280D04200AB42C8 /* Quiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
-		880F7E372280D04E00AB42C8 /* New Group */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "New Group"; sourceTree = "<group>"; };
+		880F7E372280D04E00AB42C8 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		880F7E382280D05000AB42C8 /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
-		880F7E392280D05100AB42C8 /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
+		880F7E392280D05100AB42C8 /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InstructionsViewController.swift; path = "/Users/mcaim/Desktop/CCEETech/CCEE-Tech-Masters/CCEETech/CCEETech/InstructionsViewController.swift"; sourceTree = "<absolute>"; };
 		880F7E3A2280D05400AB42C8 /* OZO_Challenges */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OZO_Challenges; sourceTree = "<group>"; };
 		880F7E3B2280D05600AB42C8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		880F7E3C2280D05600AB42C8 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		880F7E3E2280D05800AB42C8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		880F7E3F2280D05900AB42C8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		880F7E402280D05A00AB42C8 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		880F7E402280D05A00AB42C8 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeaderboardViewController.swift; path = "/Users/mcaim/Desktop/CCEETech/CCEE-Tech-Masters/CCEETech/CCEETech/LeaderboardViewController.swift"; sourceTree = "<absolute>"; };
 		880F7E412280D05A00AB42C8 /* RoundedWhiteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedWhiteButton.swift; sourceTree = "<group>"; };
 		880F7E422280D06000AB42C8 /* Sounds and Videos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Sounds and Videos"; sourceTree = "<group>"; };
 		880F7E432280D06100AB42C8 /* ModulesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModulesViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +100,7 @@
 		880F7E602280EB3C00AB42C8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		880F7E622280EF5100AB42C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		880F7E642280FC0800AB42C8 /* ozo_tutorial2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ozo_tutorial2.mp4; sourceTree = "<group>"; };
+		880F7E6622812F1B00AB42C8 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Base.lproj; sourceTree = "<group>"; };
 		AAECAA63D43698B3AF73E64D /* Pods-CCEETechTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCEETechTests.release.xcconfig"; path = "Target Support Files/Pods-CCEETechTests/Pods-CCEETechTests.release.xcconfig"; sourceTree = "<group>"; };
 		BBC5FAB75D87FE3015E00C03 /* Pods-CCEETechTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCEETechTests.debug.xcconfig"; path = "Target Support Files/Pods-CCEETechTests/Pods-CCEETechTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DD6D4FD46B997EDF88DE3755 /* Pods-CCEETech.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCEETech.release.xcconfig"; path = "Target Support Files/Pods-CCEETech/Pods-CCEETech.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +160,7 @@
 		880F7DFB2280CA8000AB42C8 /* CCEETech */ = {
 			isa = PBXGroup;
 			children = (
+				880F7E6622812F1B00AB42C8 /* Base.lproj */,
 				880F7E492280D06700AB42C8 /* InitialViewController.swift */,
 				880F7E392280D05100AB42C8 /* InstructionsViewController.swift */,
 				880F7E3E2280D05800AB42C8 /* LaunchScreen.storyboard */,
@@ -169,7 +170,7 @@
 				880F7E3F2280D05900AB42C8 /* MenuViewController.swift */,
 				880F7E432280D06100AB42C8 /* ModulesViewController.swift */,
 				880F7E642280FC0800AB42C8 /* ozo_tutorial2.mp4 */,
-				880F7E372280D04E00AB42C8 /* New Group */,
+				880F7E372280D04E00AB42C8 /* Images */,
 				880F7E3A2280D05400AB42C8 /* OZO_Challenges */,
 				880F7E462280D06400AB42C8 /* OzobotTVControllerTableViewController.swift */,
 				880F7E442280D06200AB42C8 /* ProfileViewController.swift */,
@@ -186,7 +187,6 @@
 				880F7E322280D02900AB42C8 /* HomeViewController.swift */,
 				880F7E302280D02400AB42C8 /* ImageService.swift */,
 				880F7E1F2280CFFF00AB42C8 /* AppDelegate.swift */,
-				880F7E242280D00200AB42C8 /* Base.lproj */,
 				880F7E1E2280CFFE00AB42C8 /* CCEETechMasters-Bridging-Header.h */,
 				880F7E262280D00300AB42C8 /* Challenge1QuizViewController.swift */,
 				880F7E232280D00200AB42C8 /* Challenge1ViewController.swift */,
@@ -305,12 +305,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				880F7E2D2280D00300AB42C8 /* Base.lproj in Resources */,
-				880F7E4B2280D06900AB42C8 /* New Group in Resources */,
+				880F7E4B2280D06900AB42C8 /* Images in Resources */,
 				880F7E272280D00300AB42C8 /* Challenge2ViewController.xib in Resources */,
 				880F7E612280EB3F00AB42C8 /* Main.storyboard in Resources */,
 				880F7E522280D06900AB42C8 /* LaunchScreen.storyboard in Resources */,
 				880F7E562280D06900AB42C8 /* Sounds and Videos in Resources */,
+				880F7E6722812F1B00AB42C8 /* Base.lproj in Resources */,
 				880F7E5F2280D5B000AB42C8 /* GoogleService-Info.plist in Resources */,
 				880F7E632280EF5300AB42C8 /* Assets.xcassets in Resources */,
 				880F7E4E2280D06900AB42C8 /* OZO_Challenges in Resources */,

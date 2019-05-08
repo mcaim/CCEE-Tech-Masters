@@ -2,6 +2,8 @@
 //  ViewController.swift
 //  CCEEtest
 //
+//  This is the starting screen (before logging/signing in
+//
 //  Created by mcaim on 2/14/19
 //
 
@@ -17,11 +19,6 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
-        
-        // Add the background gradient
-        //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -38,12 +35,10 @@ class MenuViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //super.viewWillAppear(animated)
-        //view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
+        // not used
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //super.viewDidAppear(animated)
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
     }
     

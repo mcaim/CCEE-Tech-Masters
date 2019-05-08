@@ -1,6 +1,8 @@
 //
 //  UserProfile.swift
-//  CCEEtest
+//  CCEETech
+//
+//  Class for storing individual (current) user profile information
 //
 //  Created by mcaim on 2/26/19.
 //

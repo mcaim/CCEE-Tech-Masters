@@ -2477,7 +2477,7 @@ Once you feel you have it right, click anywhere on the screen THREE TIMES in a r
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLm-wD-mkp">
-                                <rect key="frame" x="258" y="11" width="508" height="32"/>
+                                <rect key="frame" x="258" y="20" width="508" height="32"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2490,7 +2490,7 @@ Once you feel you have it right, click anywhere on the screen THREE TIMES in a r
                             <constraint firstItem="mgl-ZW-e7B" firstAttribute="leading" secondItem="xWR-F8-qHh" secondAttribute="leading" id="1CW-8y-hKZ"/>
                             <constraint firstItem="Gmr-ze-aQd" firstAttribute="top" secondItem="Su2-pi-cB0" secondAttribute="top" id="32Z-nC-ZWH"/>
                             <constraint firstItem="MDc-Nc-DmJ" firstAttribute="top" secondItem="Gmr-ze-aQd" secondAttribute="bottom" id="3Ca-Du-vc4"/>
-                            <constraint firstItem="pLm-wD-mkp" firstAttribute="baseline" secondItem="Su2-pi-cB0" secondAttribute="firstBaseline" id="5Tn-Cg-eKF"/>
+                            <constraint firstItem="pLm-wD-mkp" firstAttribute="baseline" secondItem="Su2-pi-cB0" secondAttribute="firstBaseline" constant="9" id="5Tn-Cg-eKF"/>
                             <constraint firstItem="mgl-ZW-e7B" firstAttribute="centerX" secondItem="pLm-wD-mkp" secondAttribute="centerX" id="Ibh-c8-2gU"/>
                             <constraint firstItem="Su2-pi-cB0" firstAttribute="leading" secondItem="xWR-F8-qHh" secondAttribute="leading" constant="430" id="LXp-DX-yeT"/>
                             <constraint firstItem="mgl-ZW-e7B" firstAttribute="top" secondItem="xWR-F8-qHh" secondAttribute="top" id="MIl-5J-2DI"/>

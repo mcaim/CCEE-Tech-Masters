@@ -2,6 +2,8 @@
 //  MainTabController.swift
 //  CCEEtest
 //
+//  Class for customizing TabController
+//
 //  Created by mcaim on 2/27/19.
 //
 

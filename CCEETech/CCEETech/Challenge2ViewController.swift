@@ -210,11 +210,9 @@ class Challenge2ViewController: UIViewController {
             self.present(alert, animated: true)
         }
         else {
-            // make sure this is updating...it is but viewdidload on tableview should reload cells
             if score < 2000 {
                 ref.child("\(currentUser!.uid)/score").setValue(2000)
             }
-            //ref.child("\(currentUser!.uid)/score").setValue(score + 1000)
             endQuiz = true
             playSound(sound: "completed")
             alert.title = "Congratulations!"

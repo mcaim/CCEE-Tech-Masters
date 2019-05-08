@@ -1,6 +1,6 @@
 //
 //  Quiz.swift
-//  CCEEtest
+//  CCEETech
 //
 //  Created by Macbook Pro on 4/15/19.
 //
